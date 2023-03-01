@@ -10,7 +10,7 @@ export default async function authValidation(req, res, next) {
     return res.status(401).send();
   }
   const token = auth.replace('Bearer ', '');
-  const user = (await db.query(userExistQuery(), [token])).rows[0];
+  const user = await db.query(userExistQuery(), [token]).rows[0];
   if (!user) {
     return res.status(401).send();
   }

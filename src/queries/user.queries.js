@@ -51,7 +51,7 @@ export const topTenQuery = () => `
     COUNT(urls.id) AS "linksCount"
   FROM
     urls
-    LEFT JOIN users ON users.id = urls.user_id
+    JOIN users ON users.id = urls.user_id
   GROUP BY
     users.id
   ORDER BY
