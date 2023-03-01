@@ -1,6 +1,6 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
-import chalk from 'chalk';
+// import chalk from 'chalk';
 dotenv.config();
 
 const { Pool } = pg;
@@ -16,12 +16,12 @@ const configDatabase = {
 
 const db = new Pool(configDatabase);
 
-db.connect((err) => {
-  if (err) {
-    console.error(chalk.red('Error connecting to the database:'), err.stack);
-  } else {
-    console.log(chalk.green('Successfully connected to the database!'));
-  }
-});
+// db.connect((err) => {
+//   if (err) {
+//     console.error(chalk.red('Error connecting to the database:'), err.stack);
+//   } else {
+//     console.log(chalk.green('Successfully connected to the database!'));
+//   }
+// });
 
 export default db;
