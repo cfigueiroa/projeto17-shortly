@@ -13,8 +13,7 @@ export async function userValidation(req, res, next) {
   try {
     const userExist = await db.query(userExistQuery(), [user.email]);
     if (userExist.rowCount > 0) {
-      res.status(409).send();
-      return;
+      return res.status(409).send();
     }
   } catch (error) {
     res.status(500).send();
@@ -33,13 +32,11 @@ export async function signInValidation(req, res, next) {
   try {
     const userExist = await db.query(userExistQuery(), [email]);
     if (userExist.rowCount <= 0) {
-      res.status(401).send();
-      return;
+      return res.status(401).send();
     }
     const passwordOk = bcrypt.compareSync(password, userExist.rows[0].password);
     if (!passwordOk) {
-      res.status(401).send();
-      return;
+      return res.status(401).send();
     }
     const user = userExist.rows[0];
     res.locals.user = user;
