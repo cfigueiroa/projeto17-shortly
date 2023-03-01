@@ -1,15 +1,9 @@
-import { userSchema, loginSchema } from '../schemas/user.schema.js';
 import db from '../database/database.connection.js';
 import bcrypt from 'bcrypt';
 import { userExistQuery } from '../queries/user.queries.js';
 
-export async function userValidation(req, res, next) {
+export async function user(req, res, next) {
   const user = req.body;
-  const { error } = userSchema.validate(req.body, { abortEarly: false });
-  if (error) {
-    const errors = error.details.map((detail) => detail.message);
-    return res.status(422).send(errors);
-  }
   try {
     const userExist = await db.query(userExistQuery(), [user.email]);
     if (userExist.rowCount > 0) {
@@ -22,13 +16,8 @@ export async function userValidation(req, res, next) {
   next();
 }
 
-export async function signInValidation(req, res, next) {
+export async function signIn(req, res, next) {
   const { email, password } = req.body;
-  const { error } = loginSchema.validate(req.body, { abortEarly: false });
-  if (error) {
-    const errors = error.details.map((detail) => detail.message);
-    return res.status(422).send(errors);
-  }
   try {
     const userExist = await db.query(userExistQuery(), [email]);
     if (userExist.rowCount <= 0) {

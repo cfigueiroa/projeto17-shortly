@@ -1,7 +1,7 @@
 import db from '../database/database.connection.js';
 import { userExistQuery } from '../queries/urls.queries.js';
 
-export default async function authValidation(req, res, next) {
+export default async function auth(req, res, next) {
   const auth = req.headers.authorization;
   if (!auth || !auth.includes('Bearer ')) {
     return res.status(401).send();

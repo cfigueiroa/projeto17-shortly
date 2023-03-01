@@ -9,7 +9,7 @@ import {
   userUrlExistQuery,
 } from '../queries/urls.queries.js';
 
-export async function postShortenUrl(req, res) {
+export async function postUrl(req, res) {
   const { url } = req.body;
   const { user } = res.locals;
   const shortUrl = nanoid();
