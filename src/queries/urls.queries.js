@@ -4,7 +4,7 @@ export const userExistQuery = () => `
   FROM
     users
   WHERE
-    token = $1
+    token = $1;
 `;
 
 export const insertUrlQuery = () => `
@@ -46,12 +46,12 @@ export const userUrlExistQuery = () => `
   FROM
     urls
   WHERE
-    id = $1;
+    id = $1
     AND user_id = $2;
 `;
 
 export const deleteUrlQuery = () => `
   DELETE FROM urls
   WHERE
-    id = $1
+    id = $1;
 `;

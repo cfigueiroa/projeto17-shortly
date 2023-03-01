@@ -4,7 +4,7 @@ export const userExistQuery = () => `
   FROM
     users
   WHERE
-    email = $1
+    email = $1;
 `;
 
 export const signUpQuery = () => `
